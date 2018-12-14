@@ -1,0 +1,69 @@
+{
+    "global" : {
+        "backup_scheduler_interval" : 900000000000,
+        "worker_count" : 1
+    },
+    "log" : {
+        "path" : "/var/log/cashbackworker/old.UTC.",
+        "link_path" : "/var/log/cashbackworker/current",
+        "level" : "debug",
+        "filename_format" : "%Y-%m-%d.%H:%M",
+        "max_age" :  604800000000000, 
+        "rotation_time" : 86400000000000
+    }, 
+    "loyalty" : {
+        "enable" : false,
+        "url" : "https://api.byte-stack.net/loyalty-back/customers/{{emoneyID}}/points",
+        "timeout" : 30000000000,
+        "app_id" : "spring-queue",
+        "key" : "809113b18407e983c261f677e7d2d9c273d8eafbad37511473ddade24811c031",
+        "method" : "PUT"
+    },
+    "mysql" : {
+        "hostname" : "127.0.0.1:3306",
+        "username" : "root",
+        "password" : "ovo@123",
+        "max_open_conns" : 100,
+        "schema" : "cms"
+    },
+    "kafka" : {
+        "group_id"   : "cashback-group",
+        "broker"     : "localhost:9092",
+        "topic"      : "stg-ovo-event-stream",
+        "message_bulk_read" : 100,
+        "max_consumer" : 5,
+        "is_active" : true
+    },
+    "worker" :{
+        "max_queue"  : 1000,
+        "max_worker" : 100
+    },
+    "sqs" : {
+        "queue_url" : "https://sqs.ap-southeast-1.amazonaws.com/863170691469/woker-queue",
+        "region"    : "ap-southeast-1",
+        "max_sqs_receive_consumer" : 100,
+        "max_sqs_workers" : 100,
+        "max_messages_read" : 5,
+        "message_read_timeout_in_ms" : 5,
+        "max_message_transit" : 10000,
+        "max_receive_count" : 100,
+        "enabled" : true
+    },
+    "cron" : {
+        "backup_cron_enabled" : true
+    },
+    "vault" : {
+        "hostname"  : "https://stg-vaultapi01.aws.ovo.id/",
+        "cred_path" : "v1/database/creds?t=rdse",
+        "skip_vault" : true
+    }
+}
+
+
+
+
+
+
+
+
+

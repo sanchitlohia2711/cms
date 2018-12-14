@@ -1,0 +1,79 @@
+hash: efa9db8050a69096c3a976029d83bdbdb5c7fd7c8b8dbe77406672fbd2f8caa5
+updated: 2018-12-14T23:08:01.127938+07:00
+imports:
+- name: github.com/aws/aws-sdk-go
+  version: fbdf992ab2dd55986179007336fc2072ea2d4eab
+  repo: https://github.com/aws/aws-sdk-go
+  vcs: git
+- name: github.com/BurntSushi/toml
+  version: b26d9c308763d68093482582cea63d69be07a0f0
+  repo: https://github.com/BurntSushi/toml
+  vcs: git
+- name: github.com/confluentinc/confluent-kafka-go
+  version: 5e4d04e05fc319ce5996a867aafef29059f26862
+  repo: https://github.com/confluentinc/confluent-kafka-go
+  vcs: git
+- name: github.com/gin-gonic/gin
+  version: b869fe1415e4b9eb52f247441830d502aece2d4d
+  repo: https://github.com/gin-gonic/gin
+  vcs: git
+- name: github.com/go-sql-driver/mysql
+  version: d523deb1b23d913de5bdada721a6071e71283618
+  repo: https://github.com/go-sql-driver/mysql
+  vcs: git
+- name: github.com/go-xorm/builder
+  version: a9b7ffcca3f0c6445c4e3b1bf72c01578817a6c3
+- name: github.com/go-xorm/core
+  version: f43c33d9a48db006417a7ac4c16b08897e3e1458
+- name: github.com/go-xorm/xorm
+  version: fc1b13e0d8e240788213230aa5747eb557f80f41
+  repo: https://github.com/go-xorm/xorm
+  vcs: git
+- name: github.com/lestrrat/go-file-rotatelogs
+  version: d3151e2a480fdcd05fb97102f5310a47d96274c4
+  repo: https://github.com/lestrrat/go-file-rotatelogs
+  vcs: git
+- name: github.com/lib/pq
+  version: d34b9ff171c21ad295489235aec8b6626023cd04
+  repo: https://github.com/lib/pq
+  vcs: git
+- name: github.com/parnurzeal/gorequest
+  version: a578a48e8d6ca8b01a3b18314c43c6716bb5f5a3
+  repo: https://github.com/parnurzeal/gorequest
+  vcs: git
+- name: github.com/rifflock/lfshook
+  version: bf539943797a1f34c1f502d07de419b5238ae6c6
+  repo: https://github.com/rifflock/lfshook
+  vcs: git
+- name: github.com/sanchitlohia2711/db-mysql
+  version: 1981aee0daa0946dac52c852f6ef3254a368322d
+  repo: https://github.com/sanchitlohia2711/db-mysql
+  vcs: git
+  subpackages:
+  - db
+- name: github.com/sanchitlohia2711/go-config
+  version: d87166b3b17c9fef2f2dbfc0071451b9abf2a3c0
+  repo: https://github.com/sanchitlohia2711/go-config
+  vcs: git
+  subpackages:
+  - config
+- name: github.com/sanchitlohia2711/go-extended-error
+  version: 61c020fa3a99ca711f5b26a498096707c75eff13
+  repo: https://github.com/sanchitlohia2711/go-extended-error
+  vcs: git
+  subpackages:
+  - err
+  - requests
+- name: github.com/sirupsen/logrus
+  version: c155da19408a8799da419ed3eeb0cb5db0ad5dbc
+  repo: https://github.com/sirupsen/logrus
+  vcs: git
+- name: github.com/streadway/amqp
+  version: a314942b2fd9dde7a3f70ba3f1062848ce6eb392
+  repo: https://github.com/streadway/amqp
+  vcs: git
+- name: google.golang.org/appengine
+  version: ae0ab99deb4dc413a2b4bd6c8bdd0eb67f1e4d06
+  subpackages:
+  - cloudsql
+testImports: []

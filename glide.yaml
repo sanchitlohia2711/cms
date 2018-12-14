@@ -1,0 +1,63 @@
+package: github.com/ko/cms-db
+import:
+- package: github.com/BurntSushi/toml
+  version: v0.3.0
+  repo:    https://github.com/BurntSushi/toml
+  vcs:     git
+- package: github.com/lestrrat/go-file-rotatelogs
+  repo:    https://github.com/lestrrat/go-file-rotatelogs
+  vcs:     git
+- package: github.com/lib/pq
+  repo:    https://github.com/lib/pq
+  vcs:     git
+- package: github.com/parnurzeal/gorequest
+  version: v0.2.15
+  repo:    https://github.com/parnurzeal/gorequest
+  vcs:     git
+- package: github.com/sirupsen/logrus
+  version: v1.0.5
+  repo:    https://github.com/sirupsen/logrus
+  vcs:     git
+- package: github.com/rifflock/lfshook
+  version: v2.3.0
+  repo:    https://github.com/rifflock/lfshook
+  vcs:     git
+- package: github.com/confluentinc/confluent-kafka-go
+  version: v0.11.4
+  repo:    https://github.com/confluentinc/confluent-kafka-go
+  vcs:     git
+- package: github.com/go-xorm/xorm
+  version: v0.6.6
+  repo:    https://github.com/go-xorm/xorm
+  vcs:     git
+- package: github.com/go-sql-driver/mysql
+  version: v1.4.0
+  repo:    https://github.com/go-sql-driver/mysql
+  vcs:     git
+- package: github.com/aws/aws-sdk-go
+  version: v1.15.65
+  repo:    https://github.com/aws/aws-sdk-go
+  vcs:     git
+- package: github.com/streadway/amqp
+  repo:    https://github.com/streadway/amqp
+  vcs:     git
+  subpackages:
+- package: github.com/gin-gonic/gin
+  version: v1.3.0
+  repo:    https://github.com/gin-gonic/gin
+  vcs:     git
+- package: github.com/sanchitlohia2711/db-mysql
+  version: init
+  repo:    https://github.com/sanchitlohia2711/db-mysql
+  vcs:     git
+  subpackages:
+- package: github.com/sanchitlohia2711/go-config
+  version: init
+  repo:    https://github.com/sanchitlohia2711/go-config
+  vcs:     git
+- package: github.com/sanchitlohia2711/go-extended-error
+  version: init
+  repo:    https://github.com/sanchitlohia2711/go-extended-error
+  vcs:     git
+  subpackages:
+  - requests

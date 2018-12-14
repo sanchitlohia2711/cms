@@ -1,0 +1,14 @@
+{
+    "TEST_101" : {
+        "level" : 1,
+        "message" : "some_message %v",
+        "customer_message" : "customer_message",
+        "http_status" : 400
+    },
+    "TEST_102" : {
+        "level" : 1,
+        "message" : "some_message1",
+        "customer_message" : "customer_message1",
+        "http_status" : 401
+    }
+}
