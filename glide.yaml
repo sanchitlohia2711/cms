@@ -60,4 +60,10 @@ import:
   repo:    https://github.com/sanchitlohia2711/go-extended-error
   vcs:     git
   subpackages:
+- package: github.com/jinzhu/gorm
+  version: v1.9.2
+  repo:    https://github.com/jinzhu/gorm
+  vcs:     git
+  subpackages:
+  
   - requests

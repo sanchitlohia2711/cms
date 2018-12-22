@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/sanchitlohia2711/go-extended-error/err"
+	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
 const (
@@ -16,7 +16,7 @@ const (
 func Initialize() {
 	errorFilePath := "./err/error.json"
 	absPath, _ := filepath.Abs(errorFilePath)
-	err := err.Initialize(absPath)
+	err := exerr.Initialize(absPath)
 	if err != nil {
 		err = fmt.Errorf(ErrFailedToLoadErrorJSON, err.Error())
 		panic(err.Error())

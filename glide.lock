@@ -1,5 +1,5 @@
-hash: efa9db8050a69096c3a976029d83bdbdb5c7fd7c8b8dbe77406672fbd2f8caa5
-updated: 2018-12-14T23:08:01.127938+07:00
+hash: 785e64d4920b30e99d30296d7e0d29e749c83f07a1fb381959ea2e64431f25db
+updated: 2018-12-20T09:05:31.60536+07:00
 imports:
 - name: github.com/aws/aws-sdk-go
   version: fbdf992ab2dd55986179007336fc2072ea2d4eab
@@ -29,6 +29,14 @@ imports:
   version: fc1b13e0d8e240788213230aa5747eb557f80f41
   repo: https://github.com/go-xorm/xorm
   vcs: git
+- name: github.com/jinzhu/gorm
+  version: 472c70caa40267cb89fd8facb07fe6454b578626
+  repo: https://github.com/jinzhu/gorm
+  vcs: git
+  subpackages:
+  - requests
+- name: github.com/jinzhu/inflection
+  version: 04140366298a54a039076d798123ffa108fff46c
 - name: github.com/lestrrat/go-file-rotatelogs
   version: d3151e2a480fdcd05fb97102f5310a47d96274c4
   repo: https://github.com/lestrrat/go-file-rotatelogs
@@ -46,7 +54,7 @@ imports:
   repo: https://github.com/rifflock/lfshook
   vcs: git
 - name: github.com/sanchitlohia2711/db-mysql
-  version: 1981aee0daa0946dac52c852f6ef3254a368322d
+  version: d4b739c67847474689338e02928ad59a536f5f75
   repo: https://github.com/sanchitlohia2711/db-mysql
   vcs: git
   subpackages:
@@ -58,12 +66,11 @@ imports:
   subpackages:
   - config
 - name: github.com/sanchitlohia2711/go-extended-error
-  version: 61c020fa3a99ca711f5b26a498096707c75eff13
+  version: c580e04e98e78ce845d3b563963a311576be0a4e
   repo: https://github.com/sanchitlohia2711/go-extended-error
   vcs: git
   subpackages:
-  - err
-  - requests
+  - exerr
 - name: github.com/sirupsen/logrus
   version: c155da19408a8799da419ed3eeb0cb5db0ad5dbc
   repo: https://github.com/sirupsen/logrus

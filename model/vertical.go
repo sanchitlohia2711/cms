@@ -1,43 +1,38 @@
 package model
 
 import (
-	"fmt"
-	"time"
-
-	"github.com/sanchitlohia2711/db-mysql/db"
-	eError "github.com/sanchitlohia2711/go-extended-error/err"
-)
-
-//VERTICALSTATUS : order status enum
-type VERTICALSTATUS int
-
-const (
-	//Init status
-	Init VERTICALSTATUS = 0
+	"github.com/jinzhu/gorm"
+	"github.com/ko/cms-db/db"
+	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
 //Vertical represents vertical
 type Vertical struct {
-	ID          int64     `xorm:"'id' pk autoincr"`
-	Name        string    `xorm:"'name'"`
-	Description string    `xorm:"'description'"`
-	Active      int       `xorm:"'active'"`
-	CreatedAt   time.Time `xorm:"'created_at' not null"`
-	UpdatedAt   time.Time `xorm:"'updated_at' not null"`
+	gorm.Model
+	Name        string
+	Description string
+	Active      int
 }
 
-//CreateVertical  create the vertical
-func CreateVertical(vertical *Vertical) (err error) {
-	now := time.Now()
+const (
+	//VERTICALMODEL vertical model constant
+	VERTICALMODEL = "vertical"
+)
 
-	vertical.CreatedAt = now
-	vertical.UpdatedAt = now
+func init() {
+	gormDb = db.GormDB()
+}
 
-	err = db.InsertOne("vertical", vertical)
-	e := eError.NewExtendedError("TEST_101", err.Error())
-	fmt.Println(e)
-	if err != nil {
-
+//create vertical
+func (v *Vertical) create() (err error) {
+	errs := gormDb.Create(v).GetErrors()
+	if len(errs) > 0 {
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", VERTICALMODEL, errs[0].Error())
 	}
+	return
+}
+
+//get vertical
+func (v *Vertical) get() (err error) {
 	return
 }

@@ -1,9 +1,9 @@
 {
-    "TEST_101" : {
-        "level" : 1,
-        "message" : "some_message %v",
-        "customer_message" : "customer_message",
-        "http_status" : 400
+    "SQL_INSERT_ERROR" : {
+        "level" : 3,
+        "message" : "SQL_INSERT_ERROR for model %s. Error is %v",
+        "customer_message" : "Some error occurred. Please try again later",
+        "http_status" : 500
     },
     "TEST_102" : {
         "level" : 1,

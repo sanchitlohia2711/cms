@@ -26,22 +26,13 @@ type Configurationer interface {
 
 //Configuration : configuration to be used
 type Configuration struct {
-	Global  *configuration.Global  `json:"global"`
-	Log     *configuration.Log     `json:"log"`
-	Kafka   *configuration.Kafka   `json:"kafka"`
-	Worker  *configuration.Worker  `json:"worker"`
-	MySQL   *configuration.MySQL   `json:"mysql"`
-	SQS     *configuration.SQS     `json:"sqs"`
-	Loyalty *configuration.Loyalty `json:"loyalty"`
-	Cron    *configuration.Cron    `json:"cron"`
-	Vault   *configuration.Vault   `json:"vault"`
+	Log   *configuration.Log   `json:"log"`
+	MySQL *configuration.MySQL `json:"mysql"`
 }
 
 //Process : process
 func (c *Configuration) Process() {
-	c.Global.Process()
 	c.Log.Process()
-	c.Loyalty.Process()
 }
 
 var (
