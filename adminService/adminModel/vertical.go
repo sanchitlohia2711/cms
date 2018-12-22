@@ -5,14 +5,20 @@ import (
 	"github.com/ko/cms-db/model"
 )
 
+//Vertical service
+type Vertical struct {
+	*model.Vertical
+}
+
 //CreateVertical create the vertical
-func CreateVertical(b *requestDTOV1.VerticalParams) (vertical *model.Vertical, err error) {
-	vertical = &model.Vertical{}
-	vertical.Name = b.Name
-	vertical.Description = b.Description
-	vertical.Active = 1
-	if err = vertical.Create(); err != nil {
+func CreateVertical(b *requestDTOV1.VerticalParams) (vertical *Vertical, err error) {
+	verticalModel := &model.Vertical{}
+	verticalModel.Name = b.Name
+	verticalModel.Description = b.Description
+	verticalModel.Active = 1
+	if err = verticalModel.Create(); err != nil {
 		return
 	}
+	vertical = &Vertical{verticalModel}
 	return
 }

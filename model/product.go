@@ -1,14 +1,31 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
+	"time"
+
 	"github.com/ko/cms-db/db"
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
+//PRODUCTSTATUS : product status enum
+type PRODUCTSTATUS int
+
+//PRODUCTVISIBILITY : product visibility enum
+type PRODUCTVISIBILITY int
+
 const (
+	//ProductDisalbed status
+	ProductDisalbed PRODUCTSTATUS = 0
+	//ProductEnabled status
+	ProductEnabled PRODUCTSTATUS = 1
+
+	//ProductInvisible status
+	ProductInvisible PRODUCTVISIBILITY = 0
+	//ProductVisible status
+	ProductVisible PRODUCTVISIBILITY = 1
+
 	//PRODUCTMODEL product model constant
-	PRODUCTMODEL = "products"
+	PRODUCTMODEL = "product"
 )
 
 func init() {
@@ -17,22 +34,29 @@ func init() {
 
 //Product represents product
 type Product struct {
-	gorm.Model
+	ID          uint `gorm:"primary_key"`
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 	Name        string
 	Description string
+	VerticalID  uint
+	BrandID     uint
+	StartTime   time.Time
+	Status      PRODUCTSTATUS
+	Visibility  PRODUCTVISIBILITY
 	Tags        interface{}
 }
 
-//create product
-func (p *Product) create() (err error) {
+//Create product
+func (p *Product) Create() (err error) {
 	errs := gormDb.Create(p).GetErrors()
 	if len(errs) > 0 {
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", PRODUCTMODEL, errs[0].Error())
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", PRODUCTMODEL, errs[0])
 	}
 	return
 }
 
-//get product
+//Get product
 func (p *Product) get() (err error) {
 	return
 }

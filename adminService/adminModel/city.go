@@ -5,12 +5,22 @@ import (
 	"github.com/ko/cms-db/model"
 )
 
+//City service struct
+type City struct {
+	*model.City
+}
+
 //CreateCity create the country
-func CreateCity(cityParams *requestDTOV1.CityParams) (err error) {
+func CreateCity(cityParams *requestDTOV1.CityParams) (city *City, err error) {
 	c := &model.City{}
 	c.Name = cityParams.Name
 	c.Description = cityParams.Description
 	c.CountryID = cityParams.CountryID
 	c.Active = 1
-	return c.Create()
+	err = c.Create()
+	if err != nil {
+		return
+	}
+	city = &City{c}
+	return
 }

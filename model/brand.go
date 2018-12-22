@@ -12,8 +12,8 @@ const (
 //Brand represents a brand
 type Brand struct {
 	Base
-	Name        string `xorm:"'name'"`
-	Description string `xorm:"'description'"`
+	Name        string
+	Description string
 }
 
 //Create brand
@@ -25,7 +25,7 @@ func (b *Brand) Create() (err error) {
 	return
 }
 
-//get brand
-func (b *Brand) get() (err error) {
+//Get brand
+func (b *Brand) Get() (err error) {
 	return
 }

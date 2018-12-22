@@ -10,6 +10,6 @@ type EntityParams struct {
 	Lat         float64     `json:"lat"`
 	Lon         float64     `json:"long"`
 	MerchantID  uint        `json:"merchantId"`
-	EntityType  string      `json:"entityType"`
+	Type        string      `json:"entityType"`
 	Tags        interface{} `json:"tags"`
 }

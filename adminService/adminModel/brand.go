@@ -5,13 +5,21 @@ import (
 	"github.com/ko/cms-db/model"
 )
 
+//Brand struct
+type Brand struct {
+	*model.Brand
+}
+
 //CreateBrand create the country
-func CreateBrand(b *requestDTOV1.BrandParams) (brand *model.Brand, err error) {
-	brand = &model.Brand{}
-	brand.Name = b.Name
-	brand.Description = b.Description
-	brand.Active = 1
-	err = brand.Create()
+func CreateBrand(brandParams *requestDTOV1.BrandParams) (brand *Brand, err error) {
+	brandModel := &model.Brand{}
+	brandModel.Name = brandParams.Name
+	brandModel.Description = brandParams.Description
+	brandModel.Active = 1
+	if err = brandModel.Create(); err != nil {
+		return
+	}
+	brand = &Brand{brandModel}
 	return
 }
 
@@ -19,6 +27,14 @@ func CreateBrand(b *requestDTOV1.BrandParams) (brand *model.Brand, err error) {
 func CreateBrandVericalMapping(brandID uint, verticalID uint) (err error) {
 	brandVerticalMapping := &model.BrandVerticalMapping{}
 	brandVerticalMapping.BrandID = brandID
+	brandVerticalMapping.VerticalID = verticalID
+	return brandVerticalMapping.Create()
+}
+
+//AssociateVertical : associates a brand with a vertical
+func (brand *Brand) AssociateVertical(verticalID uint) (err error) {
+	brandVerticalMapping := &model.BrandVerticalMapping{}
+	brandVerticalMapping.BrandID = brand.ID
 	brandVerticalMapping.VerticalID = verticalID
 	return brandVerticalMapping.Create()
 }

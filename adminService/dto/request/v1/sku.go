@@ -8,8 +8,9 @@ type SkuParams struct {
 	Price            float64     `json:"price"`
 	OfferPrice       float64     `json:"offerPrice"`
 	EventID          uint        `json:"eventId"`
-	PayTypeSupported interface{} `json:"payTypeSupported"`
+	PayTypeSupported string      `json:"payTypeSupported"`
 	LongRichDesc     string      `json:"longRichDesc"`
-	Active           uint8       `json:"active"`
 	Tags             interface{} `json:"tags"`
+	MerchantID       string      `json:"merchantId"`
+	VerticalID       uint        `json:"verticalId"`
 }
