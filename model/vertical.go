@@ -1,17 +1,15 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
 	"github.com/ko/cms-db/db"
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
 //Vertical represents vertical
 type Vertical struct {
-	gorm.Model
+	Base
 	Name        string
 	Description string
-	Active      int
 }
 
 const (
@@ -24,7 +22,7 @@ func init() {
 }
 
 //create vertical
-func (v *Vertical) create() (err error) {
+func (v *Vertical) Create() (err error) {
 	errs := gormDb.Create(v).GetErrors()
 	if len(errs) > 0 {
 		err = exerr.NewExtendedError("SQL_INSERT_ERROR", VERTICALMODEL, errs[0].Error())

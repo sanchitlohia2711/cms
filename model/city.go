@@ -1,29 +1,27 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
 const (
 	//CITYMODEL vertical model constant
-	CITYMODEL = "cities"
+	CITYMODEL = "city"
 )
 
 //City represents entity
 type City struct {
-	gorm.Model
+	Base
 	Name        string
 	Description string
-	CountryID   string
-	Tags        interface{}
+	CountryID   uint
 }
 
-//create city
-func (c *City) create() (err error) {
+//Create city
+func (c *City) Create() (err error) {
 	errs := gormDb.Create(c).GetErrors()
 	if len(errs) > 0 {
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", ENTITYMODEL, errs[0].Error())
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", CITYMODEL, errs[0].Error())
 	}
 	return
 }

@@ -23,15 +23,6 @@ func init() {
 	gormDb = db.GormDB()
 }
 
-//NewVertical creates a new brand
-func NewVertical(name, description string) (vertical *Vertical, err error) {
-	v := &Vertical{}
-	v.Name = name
-	v.Description = description
-	err = v.create()
-	return
-}
-
 //create sku production entity mapping
 func (s *SkuProductEntityMapping) create() (err error) {
 	errs := gormDb.Create(s).GetErrors()

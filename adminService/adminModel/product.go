@@ -1,1 +1,1 @@
-package adminModel
+package adminmodel

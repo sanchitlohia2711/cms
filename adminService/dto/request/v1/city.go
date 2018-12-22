@@ -5,6 +5,6 @@ type CityParams struct {
 	Name        string      `json:"name"`
 	Description string      `json:"description"`
 	Active      uint8       `json:"active"`
-	CountryID   string      `json:"countryId"`
+	CountryID   uint        `json:"countryId"`
 	Tags        interface{} `json:"tags"`
 }

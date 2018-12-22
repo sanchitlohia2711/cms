@@ -8,7 +8,7 @@ import (
 
 const (
 	//COUNTRYMODEL city model constant
-	COUNTRYMODEL = "cities"
+	COUNTRYMODEL = "country"
 )
 
 type t struct {
@@ -29,7 +29,7 @@ type Country struct {
 func (c *Country) Create() (err error) {
 	errs := gormDb.Create(c).GetErrors()
 	if len(errs) > 0 {
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", ENTITYMODEL, errs[0].Error())
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", COUNTRYMODEL, errs[0].Error())
 	}
 	return
 }

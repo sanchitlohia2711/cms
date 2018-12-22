@@ -1,41 +1,31 @@
 package model
 
 import (
-	"time"
-
-	"github.com/sanchitlohia2711/db-mysql/db"
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
+)
+
+const (
+	//BRANDMODEL brand model constant
+	BRANDMODEL = "brand"
 )
 
 //Brand represents a brand
 type Brand struct {
-	ID          int64     `xorm:"'id' pk autoincr"`
-	Name        string    `xorm:"'name'"`
-	Description string    `xorm:"'description'"`
-	Active      int       `xorm:"'active'"`
-	CreatedAt   time.Time `xorm:"'created_at' not null"`
-	UpdatedAt   time.Time `xorm:"'updated_at' not null"`
+	Base
+	Name        string `xorm:"'name'"`
+	Description string `xorm:"'description'"`
 }
 
-//NewBrand creates a new brand
-func NewBrand(name, description string) (brand *Brand, err error) {
-	b := &Brand{}
-	b.Name = name
-	b.Description = description
-	err = CreateBrand(b)
+//Create brand
+func (b *Brand) Create() (err error) {
+	errs := gormDb.Create(b).GetErrors()
+	if len(errs) > 0 {
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", BRANDMODEL, errs[0].Error())
+	}
 	return
 }
 
-//CreateBrand  create the brand
-func CreateBrand(brand *Brand) (err error) {
-	now := time.Now()
-
-	brand.CreatedAt = now
-	brand.UpdatedAt = now
-
-	err = db.InsertOne("brand", brand)
-	if err != nil {
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", err.Error())
-	}
+//get brand
+func (b *Brand) get() (err error) {
 	return
 }

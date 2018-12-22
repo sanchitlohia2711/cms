@@ -1,4 +1,4 @@
-package adminModel
+package adminmodel
 
 import (
 	requestDTOV1 "github.com/ko/cms-db/adminService/dto/request/v1"
@@ -6,10 +6,11 @@ import (
 )
 
 //CreateCountry create the country
-func CreateCountry(countryParams *requestDTOV1.CountryParams) (err error) {
-	c := &model.Country{}
-	c.Name = countryParams.Name
-	c.Description = countryParams.Description
-	c.Active = 1
-	return c.Create()
+func CreateCountry(countryParams *requestDTOV1.CountryParams) (country *model.Country, err error) {
+	country = &model.Country{}
+	country.Name = countryParams.Name
+	country.Description = countryParams.Description
+	country.Active = 1
+	err = country.Create()
+	return
 }
