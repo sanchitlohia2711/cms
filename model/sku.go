@@ -13,9 +13,15 @@ const (
 //Sku represents sku
 type Sku struct {
 	gorm.Model
-	Name        string
-	Description string
-	Tags        interface{}
+	Name             string
+	Description      string
+	Price            float64
+	OfferPrice       float64
+	EventID          uint
+	ProductID        uint
+	PayTypeSupported interface{}
+	LongRichDesc     string
+	Tags             interface{}
 }
 
 //create sku

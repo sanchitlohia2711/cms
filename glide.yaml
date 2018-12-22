@@ -41,7 +41,6 @@ import:
 - package: github.com/streadway/amqp
   repo:    https://github.com/streadway/amqp
   vcs:     git
-  subpackages:
 - package: github.com/gin-gonic/gin
   version: v1.3.0
   repo:    https://github.com/gin-gonic/gin
@@ -50,7 +49,6 @@ import:
   version: init
   repo:    https://github.com/sanchitlohia2711/db-mysql
   vcs:     git
-  subpackages:
 - package: github.com/sanchitlohia2711/go-config
   version: init
   repo:    https://github.com/sanchitlohia2711/go-config
@@ -59,10 +57,13 @@ import:
   version: init
   repo:    https://github.com/sanchitlohia2711/go-extended-error
   vcs:     git
-  subpackages:
 - package: github.com/jinzhu/gorm
   version: v1.9.2
   repo:    https://github.com/jinzhu/gorm
+  vcs:     git
+- package: github.com/gin-gonic/gin
+  version: v1.3.0
+  repo:    https://github.com/gin-gonic/gin
   vcs:     git
   subpackages:
   

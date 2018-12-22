@@ -23,6 +23,8 @@ func init() {
 	gormDb = db.GormDB()
 }
 
+func CreateVertical(str)
+
 //create vertical
 func (v *Vertical) create() (err error) {
 	errs := gormDb.Create(v).GetErrors()

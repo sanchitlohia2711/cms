@@ -1,39 +1,16 @@
-package model
+package v1
 
 import (
 	"time"
-
-	"github.com/jinzhu/gorm"
-	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
-//Event represents vertical
-type Event struct {
-	gorm.Model
-	Name        string
-	Description string
-	Active      int
-	EntityID    int
-	StartTime   time.Time
-	EndTime     time.Time
-	Tags        interface{}
-}
-
-const (
-	//EVENTMODEL event model constant
-	EVENTMODEL = "events"
-)
-
-//create event
-func (e *Event) create() (err error) {
-	errs := gormDb.Create(e).GetErrors()
-	if len(errs) > 0 {
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", VERTICALMODEL, errs[0].Error())
-	}
-	return
-}
-
-//get event
-func (e *Event) get() (err error) {
-	return
+//EventParams for create update event
+type EventParams struct {
+	Name        string      `json:"name"`
+	Description string      `json:"description"`
+	Active      uint8       `json:"active"`
+	EntityID    int         `json:"entityId"`
+	StartTime   time.Time   `json:"startTime"`
+	EndTime     time.Time   `jsonL"endTime"`
+	Tags        interface{} `json:"tags"`
 }

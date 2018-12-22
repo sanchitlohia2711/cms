@@ -1,7 +1,8 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
+	"time"
+
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
 
@@ -10,16 +11,22 @@ const (
 	COUNTRYMODEL = "cities"
 )
 
-//Country represents country
-type Country struct {
-	gorm.Model
-	Name        string
-	Description string
-	Tags        interface{}
+type t struct {
+	ID        uint `gorm:"primary_key"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Active    uint8
 }
 
-//create city
-func (c *Country) create() (err error) {
+//Country represents country
+type Country struct {
+	Base
+	Name        string
+	Description string
+}
+
+//Create city
+func (c *Country) Create() (err error) {
 	errs := gormDb.Create(c).GetErrors()
 	if len(errs) > 0 {
 		err = exerr.NewExtendedError("SQL_INSERT_ERROR", ENTITYMODEL, errs[0].Error())

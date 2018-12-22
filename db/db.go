@@ -47,7 +47,7 @@ func init() {
 		err = exerr.NewExtendedError("SQL_CONNECTION_ERROR", err.Error())
 		panic(err.Error())
 	}
-
+	gormDB.SingularTable(true)
 	gormDB.DB().SetConnMaxLifetime(time.Minute * 5)
 	gormDB.DB().SetMaxIdleConns(conf.MySQL.MaxOpenConns)
 	gormDB.DB().SetMaxOpenConns(conf.MySQL.MaxOpenConns)

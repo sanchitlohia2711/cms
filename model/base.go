@@ -8,17 +8,12 @@ import (
 
 //Base struct
 type Base struct {
-	Active    int       `xorm:"'active'"`
-	CreatedAt time.Time `xorm:"'created_at' not null"`
-	UpdatedAt time.Time `xorm:"'updated_at' not null"`
+	ID        uint `gorm:"primary_key"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	Active    uint8
 }
 
 var (
 	gormDb *gorm.DB
 )
-
-//NewBase return new base
-func NewBase() (b Base) {
-	b = Base{}
-	return
-}
