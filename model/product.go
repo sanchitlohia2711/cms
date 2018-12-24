@@ -36,17 +36,27 @@ func init() {
 
 //Product represents product
 type Product struct {
-	ID          uint `gorm:"primary_key"`
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
-	Name        string
-	Description string
-	VerticalID  uint
-	BrandID     uint
-	StartDate   time.Time
-	Status      PRODUCTSTATUS
-	Visibility  PRODUCTVISIBILITY
-	Tags        interface{}
+	ID              uint `gorm:"primary_key"`
+	Name            string
+	Price           uint
+	Description     string
+	Tags            string
+	VerticalID      uint
+	BrandID         uint
+	Status          PRODUCTSTATUS
+	Visibility      PRODUCTVISIBILITY
+	StartDate       time.Time
+	EndDate         time.Time
+	ShareURL        string
+	ThumbURL        string
+	ImageURL        string
+	InputFields     interface{}
+	HowToRedeem     string
+	ReturnPolicy    string
+	TermsConditions string
+	Attributes      interface{}
+	CreatedAt       time.Time
+	UpdatedAt       time.Time
 }
 
 //ProductFilterParams product filter params

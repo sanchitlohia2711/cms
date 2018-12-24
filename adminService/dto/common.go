@@ -14,3 +14,10 @@ type Device struct {
 	Model        string `json:"model"`
 	Manufacturer string `json:"manufacturer"`
 }
+
+//Meta struct
+type Meta struct {
+	Title       string
+	Description string
+	Attributes  interface{}
+}

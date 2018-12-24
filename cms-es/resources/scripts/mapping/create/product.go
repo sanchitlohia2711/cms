@@ -34,15 +34,72 @@ func ProductMapping() (err error) {
 						"type":"object",
 						"enabled":"false"
 					},
-					"categories":{
+					"category":{
 						"type":"long"
 					},
 					"tags" : {
-						"type":"text"
+						"type" : "text"
 					},
 					"tnc":{
 						"type":"text",
 						"index":"false"
+					},
+					"how_to_redeem":{
+						"type":"text",
+						"index":"false"
+					},
+					"terms_conditions":{
+						"type":"text",
+						"index":"false"
+					},
+					"return_policy":{
+						"type":"text",
+						"index":"false"
+					},
+					"vertical_id":{
+						"type":"long"
+					},
+					"brand_id":{
+						"type":"long"
+					},
+					"status":{
+						"type":"integer"
+					},
+					"visibility":{
+						"type":"integer"
+					},
+					"start_date":{
+						"type":"date"
+					},
+					"end_date":{
+						"type":"date"
+					},
+					"created_at":{
+						"type":"date"
+					},
+					"updated_at":{
+						"type":"date",
+						"index":"false"
+					},
+					"share_url":{
+						"type":"keyword",
+						"index":"false"
+					},
+					"image_url":{
+						"type":"keyword",
+						"index":"false"
+					},
+					"thumb_url":{
+						"type":"keyword",
+						"index":"false"
+					},
+					"merchant_id":{
+						"type":"long"
+					},
+					"input_fields":{
+						"dynamic":"true",
+						"type":"object",
+						"enabled":"false"
 					}
 				}
 			}

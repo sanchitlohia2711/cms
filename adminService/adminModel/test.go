@@ -3,6 +3,7 @@ package adminmodel
 import (
 	"time"
 
+	"github.com/ko/cms-db/adminService/dto"
 	requestDTOV1 "github.com/ko/cms-db/adminService/dto/request/v1"
 )
 
@@ -116,11 +117,24 @@ func TestCategory(vertical *Vertical) (category *Category, err error) {
 }
 
 func TestProduct(vertical *Vertical, brand *Brand) (product *Product, err error) {
+	meta := dto.Meta{}
+	meta.Title = "someTitle"
+	meta.Description = "someDescription"
 	productParams := &requestDTOV1.ProductParams{}
 	productParams.Name = "product"
 	productParams.Description = "productDescription"
 	productParams.VerticalID = vertical.ID
 	productParams.BrandID = brand.ID
+	productParams.StartDate = time.Now()
+	productParams.EndDate = time.Now()
+	productParams.ImageURL = "http://image"
+	productParams.ShareURL = "http://share"
+	productParams.ThumbURL = "http://thumb"
+	productParams.InputFields = "sdasdsa"
+	productParams.HowToRedeem = meta
+	productParams.TermsConditions = meta
+	productParams.ReturnPolicy = meta
+	productParams.Tags = []string{"sun", "moon"}
 	return CreateProduct(productParams)
 }
 
