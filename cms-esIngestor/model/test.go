@@ -6,7 +6,7 @@ import (
 
 func TestESModel() (err error) {
 	productFilters := &dbModel.ProductFilterParams{}
-	productFilters.ID = 5
+	productFilters.ID = 2
 	products, err := dbModel.GetProduct(productFilters)
 	if err != nil {
 		return
