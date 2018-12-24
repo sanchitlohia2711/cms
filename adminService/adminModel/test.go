@@ -1,11 +1,9 @@
 package adminmodel
 
 import (
-	"fmt"
 	"time"
 
 	requestDTOV1 "github.com/ko/cms-db/adminService/dto/request/v1"
-	"github.com/ko/cms-db/model"
 )
 
 func TestModel() (err error) {
@@ -73,13 +71,6 @@ func TestModel() (err error) {
 		return
 	}
 
-	skuProductEntityMapping := &model.SkuProductEntityMapping{}
-	skuProductEntityMapping.ProductID = product.ID
-	s, err := skuProductEntityMapping.Get()
-	if err != nil {
-		return
-	}
-	fmt.Println(s)
 	return
 	// TestBrandVerticalMapping()
 	// TestCategory()

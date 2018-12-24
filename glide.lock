@@ -1,5 +1,5 @@
 hash: 48ee8a09da436d2cfd3b45250e31f0666bee9aa073f9b9308170cb362db7c74f
-updated: 2018-12-24T08:12:39.70497+07:00
+updated: 2018-12-24T16:15:22.747219+07:00
 imports:
 - name: github.com/aws/aws-sdk-go
   version: fbdf992ab2dd55986179007336fc2072ea2d4eab
@@ -55,6 +55,12 @@ imports:
   version: d34b9ff171c21ad295489235aec8b6626023cd04
   repo: https://github.com/lib/pq
   vcs: git
+- name: github.com/mailru/easyjson
+  version: 60711f1a8329503b04e1c88535f419d0bb440bff
+  subpackages:
+  - buffer
+  - jlexer
+  - jwriter
 - name: github.com/mattn/go-isatty
   version: 3fb116b820352b7f0c281308a4d6250c22d94e27
 - name: github.com/modern-go/concurrent
@@ -66,11 +72,15 @@ imports:
   repo: https://github.com/olivere/elastic
   vcs: git
   subpackages:
+  - config
   - requests
+  - uritemplates
 - name: github.com/parnurzeal/gorequest
   version: a578a48e8d6ca8b01a3b18314c43c6716bb5f5a3
   repo: https://github.com/parnurzeal/gorequest
   vcs: git
+- name: github.com/pkg/errors
+  version: 816c9085562cd7ee03e7f8188a1cfd942858cded
 - name: github.com/rifflock/lfshook
   version: bf539943797a1f34c1f502d07de419b5238ae6c6
   repo: https://github.com/rifflock/lfshook

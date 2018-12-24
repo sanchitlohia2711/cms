@@ -1,6 +1,7 @@
 package model
 
-type Product struct {
+//ProductES struct
+type ProductES struct {
 	Name        string
 	Description string
 	Tags        interface{}
@@ -10,16 +11,14 @@ type Product struct {
 	TNC         string
 }
 
-type struct Location {
+type Location struct {
 	EntityID uint
 	Lat      float64
 	Lon      float64
 }
 
 type Stores struct {
-	ID uint 
-	Name uint 
+	ID    uint
+	Name  uint
 	Image uint
 }
-
-	

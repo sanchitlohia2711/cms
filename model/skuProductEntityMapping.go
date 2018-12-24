@@ -2,6 +2,7 @@ package model
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	"github.com/ko/cms-db/db"
@@ -14,6 +15,15 @@ type SkuProductEntityMapping struct {
 	ProductID uint
 	EntityID  uint
 	SkuID     uint
+}
+
+//SkuProductFilterParams represents sku product entity mapping
+type SkuProductEntityMappingFilters struct {
+	ProductID uint
+	EntityID  uint
+	SkuID     uint
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
 const (
@@ -34,8 +44,8 @@ func (s *SkuProductEntityMapping) Create() (err error) {
 	return
 }
 
-//Get sku product entity mapping
-func (s *SkuProductEntityMapping) Get() (skuProductEntityMappings []*SkuProductEntityMapping, err error) {
+//GetSkuProductEntityMapping sku product entity mapping
+func GetSkuProductEntityMapping(s *SkuProductEntityMappingFilters) (skuProductEntityMappings []*SkuProductEntityMapping, err error) {
 	var db *gorm.DB
 	if s.ProductID > 0 {
 		db = gormDb.Where("product_id = ?", s.ProductID)

@@ -1,8 +1,10 @@
 package model
 
 import (
+	"fmt"
 	"time"
 
+	"github.com/jinzhu/gorm"
 	"github.com/ko/cms-db/db"
 	"github.com/sanchitlohia2711/go-extended-error/exerr"
 )
@@ -47,6 +49,11 @@ type Product struct {
 	Tags        interface{}
 }
 
+//ProductFilterParams product filter params
+type ProductFilterParams struct {
+	ID uint
+}
+
 //Create product
 func (p *Product) Create() (err error) {
 	errs := gormDb.Create(p).GetErrors()
@@ -58,5 +65,19 @@ func (p *Product) Create() (err error) {
 
 //Get product
 func (p *Product) get() (err error) {
+	return
+}
+
+//GetProduct get all product
+func GetProduct(filters *ProductFilterParams) (products []*Product, err error) {
+	var db *gorm.DB
+	if filters.ID > 0 {
+		db = gormDb.Where("id = ?", filters.ID)
+	}
+	errs := db.Find(&products).GetErrors()
+	if len(errs) > 0 {
+		fmt.Println(errs[0])
+		err = exerr.NewExtendedError("SQL_INSERT_ERROR", SKUPRODUCTENTITYMODEL, errs[0].Error())
+	}
 	return
 }

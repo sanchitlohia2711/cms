@@ -71,7 +71,4 @@ import:
   repo:    https://github.com/olivere/elastic
   vcs:     git
   subpackages:
-
-    
-  
   - requests
