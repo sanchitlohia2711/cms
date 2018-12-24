@@ -8,6 +8,6 @@ type ProductParams struct {
 	Description string      `json:"description"`
 	VerticalID  uint        `json:"verticalID"`
 	BrandID     uint        `json:"brandID"`
-	StartTime   time.Time   `json:"startTime"`
+	StartDate   time.Time   `json:"startDate"`
 	Tags        interface{} `json:"tags"`
 }

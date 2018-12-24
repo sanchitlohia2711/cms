@@ -39,3 +39,13 @@ func CreateSku(params *requestDTOV1.SkuParams) (sku *Sku, err error) {
 	sku = &Sku{sModel}
 	return
 }
+
+//AssociateEntity with sku
+func (sku *Sku) AssociateEntity(params *requestDTOV1.SkuProductEntityMappingParams) (err error) {
+	skuProductEntityMapping := &model.SkuProductEntityMapping{}
+	skuProductEntityMapping.ProductID = params.ProductID
+	skuProductEntityMapping.EntityID = params.EntityID
+	skuProductEntityMapping.SkuID = params.SkuID
+	err = skuProductEntityMapping.Create()
+	return
+}

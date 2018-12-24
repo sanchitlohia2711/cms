@@ -5,6 +5,7 @@ import (
 	"time"
 
 	requestDTOV1 "github.com/ko/cms-db/adminService/dto/request/v1"
+	"github.com/ko/cms-db/model"
 )
 
 func TestModel() (err error) {
@@ -67,7 +68,18 @@ func TestModel() (err error) {
 		return
 	}
 
-	fmt.Println(sku)
+	err = TestSkuProductEntityMapping(product, entity, sku)
+	if err != nil {
+		return
+	}
+
+	skuProductEntityMapping := &model.SkuProductEntityMapping{}
+	skuProductEntityMapping.ProductID = product.ID
+	s, err := skuProductEntityMapping.Get()
+	if err != nil {
+		return
+	}
+	fmt.Println(s)
 	return
 	// TestBrandVerticalMapping()
 	// TestCategory()
@@ -165,4 +177,12 @@ func TestSku(product *Product, event *Event) (sku *Sku, err error) {
 	skuParams.MerchantID = "123"
 	skuParams.VerticalID = product.VerticalID
 	return CreateSku(skuParams)
+}
+
+func TestSkuProductEntityMapping(product *Product, entity *Entity, sku *Sku) (err error) {
+	skuProductEntityMappingParams := &requestDTOV1.SkuProductEntityMappingParams{}
+	skuProductEntityMappingParams.ProductID = product.ID
+	skuProductEntityMappingParams.EntityID = entity.ID
+	skuProductEntityMappingParams.SkuID = sku.ID
+	return sku.AssociateEntity(skuProductEntityMappingParams)
 }

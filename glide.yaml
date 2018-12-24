@@ -66,5 +66,12 @@ import:
   repo:    https://github.com/gin-gonic/gin
   vcs:     git
   subpackages:
+- package: github.com/olivere/elastic
+  version: v6.2.14
+  repo:    https://github.com/olivere/elastic
+  vcs:     git
+  subpackages:
+
+    
   
   - requests

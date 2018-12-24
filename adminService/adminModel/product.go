@@ -22,10 +22,10 @@ func CreateProduct(productParams *requestDTOV1.ProductParams) (product *Product,
 	productModel.Visibility = model.ProductVisible
 	productModel.Status = model.ProductEnabled
 	productModel.BrandID = productParams.BrandID
-	if productParams.StartTime.IsZero() {
-		productModel.StartTime = time.Now()
+	if productParams.StartDate.IsZero() {
+		productModel.StartDate = time.Now()
 	} else {
-		productModel.StartTime = time.Now()
+		productModel.StartDate = time.Now()
 	}
 
 	err = productModel.Create()

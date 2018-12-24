@@ -41,7 +41,7 @@ type Product struct {
 	Description string
 	VerticalID  uint
 	BrandID     uint
-	StartTime   time.Time
+	StartDate   time.Time
 	Status      PRODUCTSTATUS
 	Visibility  PRODUCTVISIBILITY
 	Tags        interface{}
