@@ -68,6 +68,7 @@ func (product *Product) AssociateCategories(categories []*Category) (err error) 
 	productCategoryMapping := &model.ProductCategoryMapping{}
 	productCategoryMapping.ProductID = product.ID
 	productCategoryMapping.CategoryID = categories[0].ID
+	productCategoryMapping.Active = 1
 	err = productCategoryMapping.Create()
 	return
 }

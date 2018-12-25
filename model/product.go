@@ -87,7 +87,43 @@ func GetProduct(filters *ProductFilterParams) (products []*Product, err error) {
 	errs := db.Find(&products).GetErrors()
 	if len(errs) > 0 {
 		fmt.Println(errs[0])
-		err = exerr.NewExtendedError("SQL_INSERT_ERROR", SKUPRODUCTENTITYMODEL, errs[0].Error())
+		err = exerr.NewExtendedError("SQL_GET_ERROR", SKUPRODUCTENTITYMODEL, errs[0].Error())
+	}
+	return
+}
+
+//Get2DCategoryArray get category array for a product
+func (p *Product) Get2DCategoryArray() (category2DArray [][]uint, err error) {
+	parentCategoryIds, err := p.GetParentCategoryIds()
+	if err != nil {
+		return
+	}
+	categories, err := GetCategoryByIDs(parentCategoryIds)
+	if err != nil {
+		return
+	}
+	for _, category := range categories {
+		var parentIds []uint
+		parentIds, err = category.GetParentCategoryIds(true)
+		if err != nil {
+			return
+		}
+		category2DArray = append(category2DArray, parentIds)
+	}
+	return
+}
+
+//GetParentCategoryIds get category array for a product
+func (p *Product) GetParentCategoryIds() (parentCategoryIds []uint, err error) {
+	filters := &ProductCategoryMappingFilters{}
+	filters.ProductID = p.ID
+	filters.Active = 1
+	productCategoryMappings, err := GetProductCateogryMapping(filters)
+	if err != nil {
+		return
+	}
+	for _, p := range productCategoryMappings {
+		parentCategoryIds = append(parentCategoryIds, p.CategoryID)
 	}
 	return
 }

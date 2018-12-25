@@ -1,0 +1,8 @@
+{
+    "ex" : {
+        "hostname" : "127.0.0.1:9200",
+        "product_index" : "product",
+        "sku_index" : "sku",
+        "entity_index" : "entity"
+    }
+}

@@ -38,10 +38,13 @@ func CreateProductES(product *dbModel.Product) (err error) {
 	p.BrandID = product.BrandID
 	p.VerticalID = product.VerticalID
 	p.ReturnPolicy = product.ReturnPolicy
+	p.Category, err = product.Get2DCategoryArray()
+	if err != nil {
+		return
+	}
 	_, err = esClient.Index().
 		Index("product").
 		Type("default").
-		Id("1").
 		BodyJson(p).
 		Refresh("wait_for").
 		Do(context.Background())

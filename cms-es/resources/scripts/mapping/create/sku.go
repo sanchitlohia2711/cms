@@ -5,8 +5,8 @@ import (
 	"log"
 )
 
-//ProductMapping create the product mapping
-func ProductMapping() (err error) {
+//SkuMapping create the product mapping
+func SkuMapping() (err error) {
 	var mapping = `
 	{
 		"settings":{
@@ -27,12 +27,6 @@ func ProductMapping() (err error) {
 						"dynamic":"true",
 						"type":"object",
 						"enabled":"false"
-					},
-					"category":{
-						"type":"long"
-					},
-					"tags" : {
-						"type" : "text"
 					},
 					"tnc":{
 						"type":"text",
@@ -56,6 +50,12 @@ func ProductMapping() (err error) {
 					"brand_id":{
 						"type":"long"
 					},
+					"price":{
+						"type":"long"
+					},
+					"offer_price":{
+						"type":"long"
+					}
 					"status":{
 						"type":"integer"
 					},
@@ -94,6 +94,11 @@ func ProductMapping() (err error) {
 						"dynamic":"true",
 						"type":"object",
 						"enabled":"false"
+					},
+					"pay_type_supported":{
+						"type":"object",
+						"dynamic":"true"
+						"enabled":"false"
 					}
 				}
 			}
@@ -102,14 +107,14 @@ func ProductMapping() (err error) {
 
 	// Use the IndexExists service to check if a specified index exists.
 	ctx := context.Background()
-	exists, err := esClient.IndexExists(conf.ES.ProductIndex).Do(ctx)
+	exists, err := esClient.IndexExists(conf.ES.SkuIndex).Do(ctx)
 	if err != nil {
 		// Handle error
 		panic(err)
 	}
 	//if index does not exist, create a new one with the specified mapping
 	if !exists {
-		createIndex, err := esClient.CreateIndex(conf.ES.ProductIndex).BodyString(mapping).Do(ctx)
+		createIndex, err := esClient.CreateIndex(conf.ES.SkuIndex).BodyString(mapping).Do(ctx)
 		if err != nil {
 			panic(err)
 		}

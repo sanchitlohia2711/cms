@@ -6,7 +6,7 @@ import (
 )
 
 //ProductMapping create the product mapping
-func ProductMapping() (err error) {
+func EntityMapping() (err error) {
 	var mapping = `
 	{
 		"settings":{
@@ -102,14 +102,14 @@ func ProductMapping() (err error) {
 
 	// Use the IndexExists service to check if a specified index exists.
 	ctx := context.Background()
-	exists, err := esClient.IndexExists(conf.ES.ProductIndex).Do(ctx)
+	exists, err := esClient.IndexExists(conf.ES.EntityIndex).Do(ctx)
 	if err != nil {
 		// Handle error
 		panic(err)
 	}
 	//if index does not exist, create a new one with the specified mapping
 	if !exists {
-		createIndex, err := esClient.CreateIndex(conf.ES.ProductIndex).BodyString(mapping).Do(ctx)
+		createIndex, err := esClient.CreateIndex(conf.ES.EntityIndex).BodyString(mapping).Do(ctx)
 		if err != nil {
 			panic(err)
 		}
