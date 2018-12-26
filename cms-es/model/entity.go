@@ -16,6 +16,7 @@ type EntityES struct {
 	Location       Location       `json:"location"`
 	CityID         uint           `json:"city_id"`
 	Address        string         `json:"address"`
+	PinCode        string
 	Active         uint8          `json:"acitve"`
 	CreatedAt      time.Time      `json:"created_at"`
 	UpdatedAt      time.Time      `json:"updated_at"`
@@ -35,3 +36,5 @@ type Location struct {
 	Lat float64
 	Lon float64
 }
+
+type Address 
