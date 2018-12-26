@@ -25,15 +25,3 @@ type ProductES struct {
 	CreatedAt       time.Time   `json:"created_at"`
 	UpdatedAt       time.Time   `json:"updated_at"`
 }
-
-type Location struct {
-	EntityID uint
-	Lat      float64
-	Lon      float64
-}
-
-type Stores struct {
-	ID    uint
-	Name  uint
-	Image uint
-}

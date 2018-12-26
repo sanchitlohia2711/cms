@@ -23,50 +23,36 @@ func EntityMapping() (err error) {
 					"description":{
 						"type":"text"
 					},
-					"attributes":{
+					"meta":{
 						"dynamic":"true",
 						"type":"object",
 						"enabled":"false"
 					},
-					"category":{
+					"location":{
+						"type":"geo_point"
+					},
+					"merchant_id":{
+						"type":"text"
+					},
+					"city_id":{
 						"type":"long"
 					},
-					"tags" : {
-						"type" : "text"
-					},
-					"tnc":{
-						"type":"text",
-						"index":"false"
-					},
-					"how_to_redeem":{
-						"type":"text",
-						"index":"false"
-					},
-					"terms_conditions":{
-						"type":"text",
-						"index":"false"
-					},
-					"return_policy":{
-						"type":"text",
-						"index":"false"
-					},
-					"vertical_id":{
+					"country_id":{
 						"type":"long"
 					},
-					"brand_id":{
-						"type":"long"
+					"type":{
+						"type":"keyword"
 					},
-					"status":{
-						"type":"integer"
+					"tags":{
+						"type":"text",
+						"fields":{
+							"keyword":{
+								"type":"keyword"
+							}
+						}
 					},
-					"visibility":{
-						"type":"integer"
-					},
-					"start_date":{
-						"type":"date"
-					},
-					"end_date":{
-						"type":"date"
+					"active":{
+						"type":"boolean"
 					},
 					"created_at":{
 						"type":"date"
@@ -74,26 +60,6 @@ func EntityMapping() (err error) {
 					"updated_at":{
 						"type":"date",
 						"index":"false"
-					},
-					"share_url":{
-						"type":"keyword",
-						"index":"false"
-					},
-					"image_url":{
-						"type":"keyword",
-						"index":"false"
-					},
-					"thumb_url":{
-						"type":"keyword",
-						"index":"false"
-					},
-					"merchant_id":{
-						"type":"long"
-					},
-					"input_fields":{
-						"dynamic":"true",
-						"type":"object",
-						"enabled":"false"
 					}
 				}
 			}

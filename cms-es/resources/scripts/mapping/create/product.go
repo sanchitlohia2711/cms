@@ -32,7 +32,12 @@ func ProductMapping() (err error) {
 						"type":"long"
 					},
 					"tags" : {
-						"type" : "text"
+						"type" : "text",
+						"fields":{
+							"keyword":{
+								"type":"keyword"
+							}
+						}
 					},
 					"tnc":{
 						"type":"text",
@@ -93,6 +98,11 @@ func ProductMapping() (err error) {
 					"input_fields":{
 						"dynamic":"true",
 						"type":"object",
+						"enabled":"false"
+					},
+					"pay_type_supported":{
+						"type":"object",
+						"dynamic":"true"
 						"enabled":"false"
 					}
 				}
