@@ -4,18 +4,18 @@ import "time"
 
 //EntityES struct
 type EntityES struct {
-	ESID           string         `json:"ESID"`
-	Name           string         `json:"name"`
-	Description    string         `json:"description"`
-	Tags           []string       `json:"tags"`
-	Meta           string         `json:"meta"`
-	Attributes     string         `json:"attributes"`
-	EntityID       string         `json:"person_id"`
-	EntityTypeID   uint           `json:"person_type_id"`
-	EntityTypeName string         `json:"person_type_name"`
-	Location       Location       `json:"location"`
-	CityID         uint           `json:"city_id"`
-	Address        string         `json:"address"`
+	ESID           string   `json:"ESID"`
+	Name           string   `json:"name"`
+	Description    string   `json:"description"`
+	Tags           []string `json:"tags"`
+	Meta           string   `json:"meta"`
+	Attributes     string   `json:"attributes"`
+	EntityID       string   `json:"person_id"`
+	EntityTypeID   uint     `json:"person_type_id"`
+	EntityTypeName string   `json:"person_type_name"`
+	Location       Location `json:"location"`
+	CityID         uint     `json:"city_id"`
+	Address        string   `json:"address"`
 	PinCode        string
 	Active         uint8          `json:"acitve"`
 	CreatedAt      time.Time      `json:"created_at"`
@@ -36,5 +36,3 @@ type Location struct {
 	Lat float64
 	Lon float64
 }
-
-type Address 

@@ -3,7 +3,9 @@ package config
 import (
 	"fmt"
 	"os"
+	"path"
 	"path/filepath"
+	"runtime"
 
 	"github.com/ko/cms-db/config/configuration"
 	"github.com/sanchitlohia2711/go-config/config"
@@ -49,7 +51,8 @@ func init() {
 	configurationFilePath, ok = os.LookupEnv(EnvConfigurationFilePath)
 	absPath := configurationFilePath
 	if !ok {
-		configurationFilePath = "./config/json/" + goEnvironment + "/settings.json"
+		_, filename, _, _ := runtime.Caller(0)
+		configurationFilePath = path.Join(path.Dir(filename), "./json/"+goEnvironment+"/settings.json")
 		absPath, _ = filepath.Abs(configurationFilePath)
 		fmt.Println(InfoUsingDefaultConfigurationFilePath, configurationFilePath)
 	}

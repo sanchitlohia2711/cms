@@ -9,7 +9,16 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "/Users/sanchitlohia/go/src/github.com/ko/cms-db/main.go",
+            "program": "/Users/slohia/go/src/github.com/ko/cms-db/main.go",
+            "env": {},
+            "args": []
+        },
+        {
+            "name": "Launch Scrap",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "/Users/slohia/go/src/github.com/ko/cms-db/scripts/scrap.go",
             "env": {},
             "args": []
         }

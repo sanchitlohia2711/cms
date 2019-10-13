@@ -9,7 +9,7 @@
     "mysql" : {
         "hostname" : "127.0.0.1:3306",
         "username" : "root",
-        "password" : "ovo@123",
+        "password" : "yourpassword",
         "max_open_conns" : 100,
         "schema" : "cms"
     }
