@@ -8,8 +8,7 @@ import (
 )
 
 func main() {
-	err.Initialize()
-	e := adminmodel.TestModel()
+	err.Initialize(	e := adminmodel.TestModel()
 	//e := esModel.TestESModel()
 	//e := indexCreate.ProductMapping()
 	fmt.Println(e)

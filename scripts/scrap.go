@@ -14,7 +14,10 @@ import (
 )
 
 func main() {
-	vertical := createVertical()
+	vertical, err := createVertical()
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
 	file, err := os.Open("./genmed.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -27,10 +30,16 @@ func main() {
 			continue
 		}
 		if len(strings.Split(scanner.Text(), ",")) == 1 {
-			createSalt(vertical, scanner.Text())
+			_, err := createSalt(vertical, scanner.Text())
+			if err != nil {
+				log.Fatal(err.Error())
+			}
 			continue
 		}
-		createComposition(vertical, scanner.Text())
+		_, err := createComposition(vertical, scanner.Text())
+		if err != nil {
+			log.Fatal(err.Error())
+		}
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -38,14 +47,20 @@ func main() {
 	}
 }
 
-func createSalt(vertical *adminModel.Vertical, salt string) {
-
-	fmt.Println(salt)
+func createSalt(vertical *adminModel.Vertical, salt string) (*adminModel.Category, error) {
+	categoryParams := &requestDTOV1.CategoryParams{}
+	categoryParams.Name = salt
+	categoryParams.Description = "Desciption of" + salt
+	categoryParams.VerticalID = vertical.ID
+	return adminModel.CreateCategory(categoryParams)
 }
 
-func createComposition(vertical, composition string) {
-	split = strings.split(composition, ",")
-	brand := createBrand(brandName)
+func createComposition(vertical *adminModel.Vertical, composition string) (*adminModel.Product, error) {
+	split := strings.Split(composition, ",")
+	brand, err := createBrand(split[3])
+	if err != nil {
+		log.Fatalf("Error occured" + err.Error())
+	}
 
 	meta := dto.Meta{}
 	meta.Title = "someTitle"
@@ -65,31 +80,23 @@ func createComposition(vertical, composition string) {
 	productParams.TermsConditions = meta
 	productParams.ReturnPolicy = meta
 	productParams.Tags = []string{"sun", "moon"}
-	return CreateProduct(productParams)
-	fmt.Println(composition)
+	productParams.Attributes = make(map[string]interface{})
+	productParams.Attributes["quantity"] = split[4]
+	return adminModel.CreateProduct(productParams)
 }
 
-func createCategory(vertical *adminModel.Vertical, categoryName string) (category *adminModel.Category, err error) {
-	categoryParams := &requestDTOV1.CategoryParams{}
-	categoryParams.Name = categoryName
-	categoryParams.Description = "Desciption of" + categoryName
-	categoryParams.VerticalID = vertical.ID
-	return adminModel.CreateCategory(categoryParams)
-}
-
-func createProduct(vertical *adminModel.CreateCountryVertical, brand *adminModel.Brand) (product *adminModel.Product, err error) {
-
-}
-
-func createVertical() {
+func createVertical() (*adminModel.Vertical, error) {
 	verticalParams := &requestDTOV1.VerticalParams{}
 	verticalParams.Name = "Medical"
 	verticalParams.Description = "Used for medical purpose"
-	adminModel.CreateVertical(verticalParams)
-	return
+	vertical, err := adminModel.CreateVertical(verticalParams)
+	if err != nil {
+		return nil, err
+	}
+	return vertical, nil
 }
 
-func createBrand(name string) (brand *Brand, err error) {
+func createBrand(name string) (brand *adminModel.Brand, err error) {
 	brandParams := &requestDTOV1.BrandParams{}
 	brandParams.Name = name
 	brandParams.Description = "brandDescription"

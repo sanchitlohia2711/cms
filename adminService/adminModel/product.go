@@ -28,7 +28,7 @@ func CreateProduct(productParams *requestDTOV1.ProductParams) (product *Product,
 	productModel.ShareURL = productParams.ShareURL
 	productModel.ThumbURL = productParams.ThumbURL
 	productModel.InputFields = "{}"
-	productModel.Attributes = "{}"
+	productModel.Attributes = productParams.Attributes
 	howToRedeem, err := json.Marshal(productParams.HowToRedeem)
 	if err != nil {
 		return
